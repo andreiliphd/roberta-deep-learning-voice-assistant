@@ -41,4 +41,4 @@ jobs:
         run: |
           ssh root@${{ secrets.HOST }} "docker stop roberta" || true
           ssh root@${{ secrets.HOST }} "docker rm roberta" || true
-          ssh root@${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
+          ssh root@${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 443:443 andreiliphd/roberta:latest"
