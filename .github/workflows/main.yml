@@ -28,7 +28,7 @@ jobs:
       - name: Add SSH Key
         run: |
           mkdir -p "$HOME/.ssh"
-          printf '%s\n' "${{ secrets.DOCKER_SSH_PUBLIC_KEY }}" > "$HOME/.ssh/id_rsa"
+          printf '%s\n' "${{ secrets.DOCKER_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/id_rsa"
           chmod 600 "$HOME/.ssh/id_rsa"
           eval $(ssh-agent)
           ssh-add "$HOME/.ssh/id_rsa"      - name: Run Docker Container
