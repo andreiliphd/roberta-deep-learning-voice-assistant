@@ -25,16 +25,10 @@ jobs:
         with:
           push: true
           tags: andreiliphd/roberta:latest
-      - name: Deploy to Docker Compose
-        uses: wshihadeh/docker-deployment-action@v1
-        with:
-          remote_docker_host: root@195.161.41.89
-          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
-          deployment_mode: docker-swarm
-          copy_stack_file: true
-          deploy_path: /root/
-          stack_file_name: docker-compose.yaml
-          keep_files: 5
-          pull_images_first: 'true'
-          args: alisa
+      - name: Run Docker Container
+        run: eval $(ssh-agent -s)
+        run: ssh-add <(echo ${{ secrets.DOCKER_SSH_PRIVATE_KEY }})
+        run: ssh ${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
+
+
+
