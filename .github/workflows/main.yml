@@ -10,13 +10,13 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v1
-      - name: Deploy to Docker swarm
+      - name: Deploy to Docker Compose
         uses: wshihadeh/docker-deployment-action@v1
         with:
           remote_docker_host: root@195.161.41.89
           ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
-          deployment_mode: docker-swarm
+          deployment_mode: docker-compose
           copy_stack_file: true
           deploy_path: /root/
           stack_file_name: docker-compose.yaml
