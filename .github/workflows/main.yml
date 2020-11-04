@@ -21,4 +21,5 @@ jobs:
           deploy_path: /root/
           stack_file_name: docker-compose.yaml
           keep_files: 5
-          args:
+          pull_images_first: 'true'
+          args: up -d
