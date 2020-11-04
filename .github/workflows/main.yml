@@ -34,4 +34,7 @@ jobs:
           ssh-add "$HOME/.ssh/id_rsa"
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: Run Docker Container
-        run: ssh root@${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
+        run: |
+          ssh root@${{ secrets.HOST }} "docker stop roberta" || true
+          ssh root@${{ secrets.HOST }} "docker rm roberta" || true
+          ssh root@${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
