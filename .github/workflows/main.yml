@@ -25,12 +25,11 @@ jobs:
           printf '%s\n' "${{ secrets.SERVER }}" > "server.crt"
           printf '%s\n' "${{ secrets.PRIVATE }}" > "server.key"
           ls
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: andreiliphd/roberta:latest
+      - name: Docker Build
+        run: |
+          docker build -t roberta
+          docker tag roberta andreiliphd/roberta:latest
+          docker push roberta andreiliphd/roberta:latest
       - name: Add SSH Key
         run: |
           mkdir -p "$HOME/.ssh"
