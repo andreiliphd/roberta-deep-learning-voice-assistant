@@ -7,4 +7,4 @@ COPY . .
 RUN pip install -r requirements.txt
 ENTRYPOINT ["gunicorn", "--certfile=server.crt", "--keyfile=server.key", "application:app", "-b 0.0.0.0:443"]
 
-EXPOSE 80
+EXPOSE 443
