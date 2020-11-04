@@ -27,7 +27,7 @@ jobs:
           ls
       - name: Docker Build
         run: |
-          docker build --pull -t roberta -f Dockerfile
+          docker build --pull -t roberta .
           docker tag roberta andreiliphd/roberta:latest
           docker push roberta andreiliphd/roberta:latest
       - name: Add SSH Key
