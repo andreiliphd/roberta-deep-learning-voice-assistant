@@ -34,4 +34,4 @@ jobs:
           ssh-add "$HOME/.ssh/id_rsa"
           printf '%s %s\n' "${{ secrets.HOST }}" "${{ secrets.DOCKER_SSH_PUBLIC_KEY }}" > ~/.ssh/known_hosts
       - name: Run Docker Container
-        run: ssh ${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
+        run: ssh root@${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
