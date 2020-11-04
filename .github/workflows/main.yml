@@ -31,9 +31,6 @@ jobs:
           printf '%s\n' "${{ secrets.DOCKER_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/id_rsa"
           chmod 600 "$HOME/.ssh/id_rsa"
           eval $(ssh-agent)
-          ssh-add "$HOME/.ssh/id_rsa"      - name: Run Docker Container
+          ssh-add "$HOME/.ssh/id_rsa"
       - name: Run Docker Container
         run: ssh ${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
-
-
-
