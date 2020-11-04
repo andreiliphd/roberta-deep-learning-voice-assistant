@@ -21,9 +21,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Setup SSL
         run: |
-          ls
+          pwd
           printf '%s\n' "${{ secrets.SERVER }}" > "server.crt"
           printf '%s\n' "${{ secrets.PRIVATE }}" > "server.key"
+          ls
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
