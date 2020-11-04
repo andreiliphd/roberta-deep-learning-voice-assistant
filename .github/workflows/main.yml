@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v1
       - name: Deploy to Docker swarm
         uses: wshihadeh/docker-deployment-action@v1
         with:
