@@ -28,7 +28,7 @@ jobs:
       - name: Eval SSH
         run: eval $(ssh-agent -s)
       - name: SSH Add
-        run: ssh-add < "${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+        run: ssh-add < "${{ secrets.DOCKER_SSH_PRIVATE_KEY }}"
       - name: Run Docker Container
         run: ssh ${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
 
