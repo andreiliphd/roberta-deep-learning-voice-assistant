@@ -29,7 +29,7 @@ jobs:
         run: |
           docker build --pull -t roberta .
           docker tag roberta andreiliphd/roberta:latest
-          docker push roberta andreiliphd/roberta:latest
+          docker push andreiliphd/roberta:latest
       - name: Add SSH Key
         run: |
           mkdir -p "$HOME/.ssh"
