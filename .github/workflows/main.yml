@@ -32,6 +32,6 @@ jobs:
           chmod 600 "$HOME/.ssh/id_rsa"
           eval $(ssh-agent)
           ssh-add "$HOME/.ssh/id_rsa"
-          printf '%s %s\n' "${{ secrets.HOST }}" "${{ secrets.DOCKER_SSH_PUBLIC_KEY }}" > /etc/ssh/ssh_known_hosts
+          printf '%s %s\n' "${{ secrets.HOST }}" "${{ secrets.DOCKER_SSH_PUBLIC_KEY }}" > ~/.ssh/known_hosts
       - name: Run Docker Container
         run: ssh ${{ secrets.HOST }} "docker run -d --restart always --name roberta -p 80:80 andreiliphd/roberta:latest"
