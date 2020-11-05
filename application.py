@@ -1,9 +1,7 @@
 import json
-import mmh3
 import flask
 from flask import Flask, request
 import torch
-from transformers import pipeline
 from transformers import AutoTokenizer, AutoModel
 
 

@@ -1,3 +1,4 @@
+transformers
 gunicorn
 flask
 mmh3==2.3.1
